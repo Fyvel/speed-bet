@@ -1,0 +1,51 @@
+:host{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.tile {
+  flex: 1 1 auto;
+  max-width: 600px;
+  background-color: #673ab766;
+  margin: 10px 0;
+
+  .match {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    .sport {
+      flex: 1 0 auto;
+      text-align: center;
+    }
+
+    .teams {
+      flex: 1 1 auto;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+      .team {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+    }
+
+    .status {
+      flex: 1 0 auto;
+      text-align: right;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex: 1 1 auto;
+
+    .action-btn {
+      flex: 1 1 auto;
+    }
+  }
+}

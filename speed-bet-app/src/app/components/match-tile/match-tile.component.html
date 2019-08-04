@@ -1,0 +1,24 @@
+<mat-card class="tile">
+  <mat-card-header class="match">
+    <h2 class="sport" mat-card-avatar>{{match.sport}}</h2>
+    <div class="teams">
+      <div class="team">
+        <mat-card-title>{{match.teamA.name}}</mat-card-title>
+        <mat-card-subtitle>{{match.teamA.cote}}</mat-card-subtitle>
+      </div>
+      <b>-</b>
+      <div class="team">
+        <mat-card-title>{{match.teamB.name}}</mat-card-title>
+        <mat-card-subtitle>{{match.teamB.cote}}</mat-card-subtitle>
+      </div>
+    </div>
+    <div class="status">
+      <mat-card-title>{{match.status}}</mat-card-title>
+    </div>
+  </mat-card-header>
+  <mat-card-actions class="actions">
+    <button mat-flat-button color="accent" class="action-btn">
+      BET
+    </button>
+  </mat-card-actions>
+</mat-card>
