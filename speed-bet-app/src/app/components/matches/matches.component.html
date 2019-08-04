@@ -1,0 +1,6 @@
+<ng-container *ngIf="(matches$ | async) as matches">
+  <ng-container *ngFor="let match of matches">
+    <app-match-tile *ngIf="match" [match]="match">
+    </app-match-tile>
+  </ng-container>
+</ng-container>
