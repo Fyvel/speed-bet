@@ -1,85 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
-
-const STATUS = {
-  upcoming: 'Upcoming',
-  ended: 'Ended',
-};
+import { of, Observable } from 'rxjs';
+import { STATUS } from '../enums/enums';
+import { MatchModel, BetModel } from '../models/interfaces';
 
 const matches = [
   {
-    id: 1,
+    matchId: 1,
     sport: '🥋',
-    teamA: { name: 'Chuck Norris', cote: 97 },
-    teamB: { name: 'Sangoku', cote: 42 },
+    teams: [
+      { teamId: 1, name: 'Chuck Norris', odds: 9.7 },
+      { teamId: 2, name: 'Sangoku', odds: 4.2 }],
     status: STATUS.upcoming,
     winner: null
   },
   {
-    id: 2,
+    matchId: 2,
     sport: '🥊',
-    teamA: { name: 'John Wick', cote: 97 },
-    teamB: { name: 'Superman', cote: 42 },
+    teams: [
+      { teamId: 3, name: 'John Wick', odds: 3.1 },
+      { teamId: 4, name: 'Superman', odds: 1.1 }
+    ],
     status: STATUS.upcoming,
     winner: null
   },
   {
-    id: 3,
+    matchId: 3,
     sport: '🥌',
-    teamA: { name: 'Deadpool', cote: 97 },
-    teamB: { name: 'Darth Maul', cote: 42 },
+    teams: [
+      { teamId: 5, name: 'Deadpool', odds: 3.4 },
+      { teamId: 6, name: 'Darth Maul', odds: 5 }],
     status: STATUS.upcoming,
     winner: null
-  },
-  {
-    id: 1,
-    sport: '🥋',
-    teamA: { name: 'Chuck Norris', cote: 97 },
-    teamB: { name: 'Sangoku', cote: 42 },
-    status: STATUS.upcoming,
-    winner: null
-  },
-  {
-    id: 2,
-    sport: '🥊',
-    teamA: { name: 'John Wick', cote: 97 },
-    teamB: { name: 'Superman', cote: 42 },
-    status: STATUS.upcoming,
-    winner: null
-  },
-  {
-    id: 3,
-    sport: '🥌',
-    teamA: { name: 'Deadpool', cote: 97 },
-    teamB: { name: 'Darth Maul', cote: 42 },
-    status: STATUS.upcoming,
-    winner: null
-  },
-  {
-    id: 1,
-    sport: '🥋',
-    teamA: { name: 'Chuck Norris', cote: 97 },
-    teamB: { name: 'Sangoku', cote: 42 },
-    status: STATUS.upcoming,
-    winner: null
-  },
-  {
-    id: 2,
-    sport: '🥊',
-    teamA: { name: 'John Wick', cote: 97 },
-    teamB: { name: 'Superman', cote: 42 },
-    status: STATUS.upcoming,
-    winner: null
-  },
-  {
-    id: 3,
-    sport: '🥌',
-    teamA: { name: 'Deadpool', cote: 97 },
-    teamB: { name: 'Darth Maul', cote: 42 },
-    status: STATUS.upcoming,
-    winner: null
-  },
+  }
 ];
 
 @Injectable({
@@ -93,5 +46,14 @@ export class MatchesService {
   getLatestMatches(page: number = 1) {
     return of(matches);
     // return this.http.get(`${BASE_URL}/matches?page=${page}`);
+  }
+
+  getMatch(matchId: number): Observable<MatchModel> {
+    return of(matches.find(x => x.matchId === matchId));
+  }
+
+  placeBet(bet: BetModel): Observable<any> {
+    console.log(bet);
+    throw new Error('not implemented yet');
   }
 }

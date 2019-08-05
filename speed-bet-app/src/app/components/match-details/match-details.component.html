@@ -1,0 +1,57 @@
+<form [formGroup]="formGroup" (ngSubmit)="formGroup.valid && onFormSubmit()">
+  <mat-card class="card-details">
+    <div class="match" *ngIf="(match$ | async) as match">
+      <h3 class="sport flex-col">
+        <span class="title">SPORT</span>
+        <h2 mat-card-avatar>{{match.sport}}</h2>
+      </h3>
+      <h3 class="teams flex-col">
+        <span class="title">TEAMS</span>
+        <mat-radio-group aria-label="Select a team" class="teams" formControlName="team">
+          <ng-container *ngFor="let team of match.teams">
+            <mat-radio-button [value]="team">
+              <span>
+                {{team.name}}
+              </span>
+            </mat-radio-button>
+          </ng-container>
+        </mat-radio-group>
+      </h3>
+      <h3 class="odds flex-col">
+        <span class="title">ODDS</span>
+        <div class="odds">
+          <ng-container *ngFor="let team of match.teams">
+            <span>
+              {{team.odds.toFixed(2)}}
+            </span>
+          </ng-container>
+        </div>
+      </h3>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="amount-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>BET AMOUNT</mat-label>
+        <input matInput formControlName="amount" min="1" max="1000000" type="number">
+        <mat-icon matPrefix>attach_money</mat-icon>
+      </mat-form-field>
+      <div class="flex-col">
+        <h3 class="title">TO WIN</h3>
+        <h4>${{toWin}}</h4>
+      </div>
+      <div class="flex-col">
+        <h3 class="title">CASHOUT</h3>
+        <h4>${{cashout}}</h4>
+      </div>
+    </div>
+    <mat-card-actions class="actions">
+      <button mat-flat-button color="accent" class="action-btn" type="submit">
+        PLACE BET
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+<br />
+<button mat-stroked-button color="primary" (click)="onBackToListClick()">
+  Back to list
+</button>

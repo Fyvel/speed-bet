@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchesService } from 'src/app/services/matches.service';
 import { Observable } from 'rxjs';
+import { MatchModel } from 'src/app/models/interfaces';
 
 @Component({
   selector: 'app-matches',
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./matches.component.scss']
 })
 export class MatchesComponent implements OnInit {
-  matches$: Observable<any>;
+  matches$: Observable<MatchModel[]>;
 
   constructor(private matchesSrv: MatchesService) { }
 

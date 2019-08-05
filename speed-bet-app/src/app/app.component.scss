@@ -12,3 +12,8 @@
 .text {
   margin: 0 5px;
 }
+
+.router-outlet {
+  max-width: 600px;
+  margin: 7px auto;
+}
