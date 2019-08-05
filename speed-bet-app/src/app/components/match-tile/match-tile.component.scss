@@ -1,4 +1,6 @@
-:host{
+@import "../../../styles/palette";
+
+:host {
   display: flex;
   margin: auto;
   justify-content: center;
@@ -6,8 +8,7 @@
 
 .tile {
   flex: 1 1 auto;
-  max-width: 600px;
-  background-color: #673ab766;
+  background-color: $sb-background-color;
   margin: 10px 0;
 
   .match {
