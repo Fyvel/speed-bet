@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { STATUS } from '../enums/enums';
-import { MatchModel, BetModel, TeamModel } from '../models/interfaces';
+import { MatchModel, BetModel } from '../models/interfaces';
 import { map } from 'rxjs/operators';
 
 const BASE_URL = `https://localhost:5001/api`;
@@ -77,7 +76,6 @@ export class MatchesService {
   }
 
   placeBet(bet: BetModel): Observable<any> {
-    console.log(bet);
-    throw new Error('not implemented yet');
+    return this.http.post(`${BASE_URL}/bet`, bet);
   }
 }

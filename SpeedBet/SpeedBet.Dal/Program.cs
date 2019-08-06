@@ -14,6 +14,7 @@ namespace SpeedBet.Dal
 
             using (var db = new SpeedBetContext())
             {
+                InitUser(db);
                 InitTeams(db);
                 InitMatchTypes(db);
                 InitMatches(db);
@@ -28,6 +29,20 @@ namespace SpeedBet.Dal
                 db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
             }
+        }
+
+        private static void InitUser(SpeedBetContext db)
+        {
+            var signleUser = new UserDto
+            {
+                AmountBet = 0,
+                AmountWon = 0
+            };
+            db.Users.Add(signleUser);
+            var count = db.SaveChanges();
+            Console.WriteLine();
+            Console.WriteLine("User added:");
+            Console.WriteLine("{0} record saved to database", count);
         }
 
         private static void InitTeams(SpeedBetContext db)

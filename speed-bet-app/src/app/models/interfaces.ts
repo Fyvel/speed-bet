@@ -14,7 +14,7 @@ export interface MatchModel {
 }
 
 export interface BetModel {
-  betId?: number;
+  betId: number;
   matchId: number;
   teamId: number;
   amount: number;

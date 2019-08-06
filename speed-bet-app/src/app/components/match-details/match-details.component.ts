@@ -57,6 +57,7 @@ export class MatchDetailsComponent implements OnInit, OnDestroy {
 
   private prepareRequest(formValue: { team: TeamModel, amount: number }, match: MatchModel) {
     const bet: BetModel = {
+      betId: 0,
       matchId: match.matchId,
       teamId: formValue.team.teamId,
       odds: formValue.team.odds,
