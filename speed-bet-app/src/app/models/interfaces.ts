@@ -6,9 +6,10 @@ export interface TeamModel {
 
 export interface MatchModel {
   matchId: number;
+  type: string;
   sport: string;
-  teams: TeamModel[];
   status: string;
+  teams: TeamModel[];
   winner?: TeamModel;
 }
 
