@@ -1,5 +1,6 @@
 <form [formGroup]="formGroup" (ngSubmit)="formGroup.valid && onFormSubmit()">
   <mat-card class="card-details">
+    <mat-card-header class="type">{{match.type}}</mat-card-header>
     <div class="match" *ngIf="(match$ | async) as match">
       <h3 class="sport flex-col">
         <span class="title">SPORT</span>

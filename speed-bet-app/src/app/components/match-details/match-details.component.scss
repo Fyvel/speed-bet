@@ -13,6 +13,16 @@
 .card-details {
   background-color: $sb-background-color;
 
+  .type {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
   .match {
     display: flex;
     justify-content: space-between;

@@ -36,16 +36,16 @@ namespace SpeedBet.Api.Controllers
 
         [HttpGet]
         [Route("match/{id}")]
-        public ActionResult<MatchModel> GetMatch(int id)
+        public async Task<ActionResult<MatchModel>> GetMatch(int id)
         {
             try
             {
-                var result = _matchesService.GetMatchById(id);
+                var result = await _matchesService.GetMatchById(id);
                 return new OkObjectResult(result);
             }
             catch (Exception ex)
             {
-                // Todo: log exception
+                Console.Write(ex); // Todo: log exception
                 return StatusCode(500);
             }
         }

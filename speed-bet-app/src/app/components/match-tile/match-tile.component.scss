@@ -11,6 +11,16 @@
   background-color: $sb-background-color;
   margin: 10px 0;
 
+  .type {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
   .match {
     display: flex;
     flex-flow: row nowrap;
@@ -25,13 +35,18 @@
     .teams {
       flex: 1 1 auto;
       display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
+      flex-flow: row wrap;
+      justify-content: space-around;
 
       .team {
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
+        text-align: center;
+      }
+
+      .team-separator{
+        margin: 0 5px;
       }
     }
 

@@ -12,6 +12,9 @@
 *.user
 *.sln.docstates
 
+# Generated db
+speedbet.db
+
 # Build results
 [Dd]ebug/
 [Rr]elease/
