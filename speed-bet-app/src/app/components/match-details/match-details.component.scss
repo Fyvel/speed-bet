@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+.flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
 .title {
   opacity: 0.7;
 }
@@ -50,17 +56,29 @@
   .amount-fields {
     margin-top: 14px;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
+
+    .result {
+      flex: 1 1 auto;
+      justify-content: space-around;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 24px;
+      }
+    }
   }
 
   .actions {
     display: flex;
     flex: 1 1 auto;
+    align-items: center;
 
     .action-btn {
       flex: 1 1 auto;
+      margin: 6px;
     }
   }
 }

@@ -25,6 +25,7 @@ namespace SpeedBet.Api
 
             services.AddScoped<IMatchesService, MatchesService>();
             services.AddScoped<IBetsService, BetsService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +41,7 @@ namespace SpeedBet.Api
                 app.UseHsts();
             }
 
-            // Todo: setup CORS policies properly for prod
+            // Todo: set up CORS policies
             app.UseCors(builder => builder
             .AllowAnyHeader()
             .AllowAnyMethod()

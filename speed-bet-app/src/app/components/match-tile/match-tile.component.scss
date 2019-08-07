@@ -28,8 +28,7 @@
     justify-content: space-between;
 
     .sport {
-      flex: 1 0 auto;
-      text-align: center;
+      text-align: left;
     }
 
     .teams {
@@ -45,13 +44,12 @@
         text-align: center;
       }
 
-      .team-separator{
+      .team-separator {
         margin: 0 5px;
       }
     }
 
     .status {
-      flex: 1 0 auto;
       text-align: right;
     }
   }

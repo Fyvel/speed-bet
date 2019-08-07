@@ -11,10 +11,28 @@ namespace SpeedBet.Api.Controllers
     public class BetsController : Controller
     {
         private IBetsService _betsService;
+        private IUserService _userService;
 
-        public BetsController(IBetsService betSrv)
+        public BetsController(IBetsService betSrv, IUserService usrSrv)
         {
             _betsService = betSrv;
+            _userService = usrSrv;
+        }
+
+        [HttpGet]
+        [Route("balance")]
+        public async Task<ActionResult<BalanceModel>> GetBalance()
+        {
+            try
+            {
+                var result = await _userService.GetBalance();
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex); // Todo: log exception
+                return StatusCode(500);
+            }
         }
 
         [HttpPost]
@@ -32,5 +50,6 @@ namespace SpeedBet.Api.Controllers
                 return StatusCode(500);
             }
         }
+
     }
 }

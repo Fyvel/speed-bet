@@ -10,7 +10,8 @@ export interface MatchModel {
   sport: string;
   status: string;
   teams: TeamModel[];
-  winner?: TeamModel;
+  winner: TeamModel;
+  currentBet: BetModel;
 }
 
 export interface BetModel {
@@ -19,4 +20,9 @@ export interface BetModel {
   teamId: number;
   amount: number;
   odds: number;
+}
+
+export interface BalanceModel {
+  amountBet: number;
+  amountWon: number;
 }

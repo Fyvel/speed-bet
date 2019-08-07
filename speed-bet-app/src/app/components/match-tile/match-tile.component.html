@@ -1,7 +1,7 @@
 <mat-card class="tile">
   <mat-card-header class="type">{{match.type}}</mat-card-header>
   <mat-card-header class="match">
-    <h2 class="sport">{{match.sport}}</h2>
+    <mat-card-title class="sport">{{match.sport}}</mat-card-title>
     <ng-container *ngFor="let team of match.teams; let i = index">
       <div class="teams">
         <div class="team">
@@ -16,8 +16,8 @@
     </div>
   </mat-card-header>
   <mat-card-actions class="actions">
-    <button mat-flat-button color="accent" class="action-btn" [routerLink]="matchRoute">
-      BET
+    <button mat-flat-button color="primary" class="action-btn" [routerLink]="matchRoute">
+      DETAILS
     </button>
   </mat-card-actions>
 </mat-card>

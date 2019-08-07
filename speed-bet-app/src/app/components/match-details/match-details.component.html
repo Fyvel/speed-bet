@@ -9,7 +9,7 @@
         </h3>
         <h3 class="teams flex-col">
           <span class="title">TEAMS</span>
-          <mat-radio-group aria-label="Select a team" class="teams" formControlName="team">
+          <mat-radio-group color="primary" aria-label="Select a team" class="teams" formControlName="team">
             <ng-container *ngFor="let team of match.teams">
               <mat-radio-button [value]="team">
                 <span>
@@ -37,24 +37,47 @@
           <input matInput formControlName="amount" min="1" max="1000000" type="number">
           <mat-icon matPrefix>attach_money</mat-icon>
         </mat-form-field>
-        <div class="flex-col">
-          <h3 class="title">TO WIN</h3>
-          <h4>${{toWin}}</h4>
-        </div>
-        <div class="flex-col">
-          <h3 class="title">CASHOUT</h3>
-          <h4>${{cashout}}</h4>
+        <div class="flex-row result">
+          <ng-container *ngIf="!match.winner; else result">
+            <div class="flex-col">
+              <h3 class="title">TO WIN</h3>
+              <h4>${{toWin}}</h4>
+            </div>
+            <div class="flex-col">
+              <h3 class="title">CASHOUT</h3>
+              <h4>${{cashout}}</h4>
+            </div>
+          </ng-container>
+          <ng-template #result>
+            <div class="flex-col">
+              <h3 class="title">WINNER</h3>
+              <h2>🥇 {{match.winner.name}} 🥇</h2>
+            </div>
+          </ng-template>
         </div>
       </div>
-      <mat-card-actions class="actions">
-        <button mat-flat-button color="accent" class="action-btn" type="submit">
-          PLACE BET
-        </button>
-      </mat-card-actions>
+      <mat-divider></mat-divider>
+      <ng-container *ngIf="!match.currentBet; else endGame">
+        <mat-card-actions class="actions">
+          <button mat-flat-button color="primary" class="action-btn" type="submit">
+            PLACE BET
+          </button>
+        </mat-card-actions>
+      </ng-container>
+      <ng-template #endGame>
+        <mat-card-actions class="actions">
+          <button (click)="endMatch(match.matchId)" [disabled]="match.winner" type="button" mat-flat-button color="warn"
+            class="action-btn">
+            END GAME
+          </button>
+        </mat-card-actions>
+      </ng-template>
     </ng-container>
   </mat-card>
 </form>
 <br />
+
 <button mat-stroked-button color="primary" (click)="onBackToListClick()">
   Back to list
 </button>
+
