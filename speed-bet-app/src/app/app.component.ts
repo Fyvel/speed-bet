@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { MatchesService } from './services/matches.service';
+import { BalanceModel } from './models/interfaces';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,11 @@ import { Subject } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  balance = 0;
-  bet = 0;
+  balance$: Observable<BalanceModel>;
 
-  constructor() {
+  constructor(private matchService: MatchesService) {
+    this.matchService.initBalance().subscribe();
+    this.balance$ = this.matchService.balance$;
   }
 
   ngOnInit() {

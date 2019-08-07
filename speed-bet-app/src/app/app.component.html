@@ -1,14 +1,16 @@
 <mat-toolbar class="toolbar" color="primary">
   SPEED BET
   <span class="spacer"></span>
-  <div class="text"> {{bet}} </div>
-  <mat-icon aria-hidden="false" aria-label="payment icon">
-    payment
-  </mat-icon>
-  <span class="text"> {{balance}} </span>
-  <mat-icon aria-hidden="false" aria-label="attach_money icon">
-    attach_money
-  </mat-icon>
+  <ng-container *ngIf="(balance$ | async) as balance">
+    <div class="text"> {{balance.amountBet}} </div>
+    <mat-icon aria-hidden="false" aria-label="payment icon">
+      payment
+    </mat-icon>
+    <span class="text"> {{balance.amountWon}} </span>
+    <mat-icon aria-hidden="false" aria-label="attach_money icon">
+      attach_money
+    </mat-icon>
+  </ng-container>
 </mat-toolbar>
 
 <div class="router-outlet">

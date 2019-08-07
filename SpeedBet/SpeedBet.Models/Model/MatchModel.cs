@@ -11,6 +11,7 @@ namespace SpeedBet.Models.Model
         public StatusEnum Status { get; }
         public IReadOnlyList<TeamModel> Teams { get; }
         public TeamModel Winner { get; }
+        public BetModel CurrentBet { get; }
 
         public MatchModel(
             int id,
@@ -18,7 +19,8 @@ namespace SpeedBet.Models.Model
             string type,
             StatusEnum status,
             List<TeamModel> teams,
-            TeamModel winner)
+            TeamModel winner,
+            BetModel currentBet = null)
         {
             Id = id;
             Sport = sport;
@@ -26,6 +28,7 @@ namespace SpeedBet.Models.Model
             Status = status;
             Teams = teams;
             Winner = winner;
+            CurrentBet = currentBet;
         }
     }
 }

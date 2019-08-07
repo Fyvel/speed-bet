@@ -24,8 +24,8 @@ namespace SpeedBet.Api.Controllers
         {
             try
             {
-                var result = await _matchesService.GetMatches();
-                return new OkObjectResult(result);
+                var matches = await _matchesService.GetMatches();
+                return new OkObjectResult(matches);
             }
             catch (Exception ex)
             {
@@ -41,6 +41,22 @@ namespace SpeedBet.Api.Controllers
             try
             {
                 var result = await _matchesService.GetMatchById(id);
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex); // Todo: log exception
+                return StatusCode(500);
+            }
+        }
+
+        [HttpPost]
+        [Route("match/{id}/finish")]
+        public async Task<ActionResult<TeamModel>> EndMatch(int id)
+        {
+            try
+            {
+                var result = await _matchesService.EndMatch(id);
                 return new OkObjectResult(result);
             }
             catch (Exception ex)

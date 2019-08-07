@@ -8,5 +8,6 @@ namespace SpeedBet.Core
     {
         Task<IReadOnlyList<MatchModel>> GetMatches();
         Task<MatchModel> GetMatchById(int id);
+        Task<TeamModel> EndMatch(int matchId);
     }
 }
