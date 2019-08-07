@@ -1,11 +1,10 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatchesService } from 'src/app/services/matches.service';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatchModel, TeamModel, BetModel, BalanceModel } from 'src/app/models/interfaces';
+import { MatchModel, TeamModel, BetModel } from 'src/app/models/interfaces';
 
 interface BetFormValue {
   team: {
