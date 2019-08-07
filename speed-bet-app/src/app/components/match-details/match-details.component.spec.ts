@@ -78,11 +78,17 @@ describe('MatchDetailsComponent', () => {
     amount: 30000
   };
 
-  const mockWinner: TeamModel = {
+  const mockWinnerTeamA: TeamModel = {
     name: 'TeamA',
     odds: 12.1,
     teamId: 111
   };
+
+  const mockWinnerTeamB: TeamModel = {
+    name: 'TeamB',
+    odds: 2.1,
+    teamId: 222
+  }
 
   let component: MatchDetailsComponent;
   let fixture: ComponentFixture<MatchDetailsComponent>;
@@ -197,19 +203,19 @@ describe('MatchDetailsComponent', () => {
   it('should end the match and set the winner', () => {
     // arrange
     component['match'] = mockMatch;
-    const spy = spyOn(service, 'endMatch').and.callFake(() => of(mockWinner));
+    const spy = spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamA));
     // act
     component.endMatch(123);
     // assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(123);
-    expect(component['match'].winner).toEqual(mockWinner);
+    expect(component['match'].winner).toEqual(mockWinnerTeamA);
   });
 
   it('should update the user balance if the bet is won', () => {
     // arrange
     component['match'] = mockMatchWithBet;
-    spyOn(service, 'endMatch').and.callFake(() => of(mockWinner));
+    spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamA));
     const spy = spyOn(service, 'setBalance');
     const expectedBalance = {
       amountBet: 0,
@@ -220,6 +226,17 @@ describe('MatchDetailsComponent', () => {
     // assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(expectedBalance);
+  });
+
+  it('should not update the user balance if the bet is lost', () => {
+    // arrange
+    component['match'] = mockMatchWithBet;
+    spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamB));
+    const spy = spyOn(service, 'setBalance');
+    // act
+    component.endMatch(123);
+    // assert
+    expect(spy).toHaveBeenCalledTimes(0);
   });
 
   it('should update potential gains when the form has a new value', () => {
