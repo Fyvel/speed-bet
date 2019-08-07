@@ -5,7 +5,7 @@ import { MatchesService } from 'src/app/services/matches.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-fdescribe('MatchesComponent', () => {
+describe('MatchesComponent', () => {
   let component: MatchesComponent;
   let fixture: ComponentFixture<MatchesComponent>;
   let service: MatchesService;
