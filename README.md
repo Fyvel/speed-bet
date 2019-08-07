@@ -6,7 +6,8 @@ Before you begin, make sure your development environment includes Node.js and an
 Your environment must also includes the .NET Core SDK.
 
 ## Database
-- From `~\speed-bet\SpeedBet\SpeedBet.Dal`, run `dotnet run` to create and populate the database. (This will reinitialize the entire database and restore default entries).
+- From `~\speed-bet\SpeedBet\SpeedBet.Dal`, run `dotnet run` to create and populate the database. 
+(This will reinitialize the entire database and restore default entries).
 
 ## Builds
 ### Back-end
@@ -25,4 +26,5 @@ Make sure the address it's listening on is the same as the one used by the angul
 - From `~\speed-bet\speed-bet-app`, run `npm start`
 
 ## Running unit tests
--  From `~\speed-bet\speed-bet-app`, run `npm test` and open in a browser the `index.html` (in the coverage folder generated)
+-  From `~\speed-bet\speed-bet-app`, run `npm test` and open in a browser the generated `index.html` 
+(you can find it in the `coverage` folder)
