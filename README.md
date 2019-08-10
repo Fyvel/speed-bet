@@ -5,16 +5,16 @@ Small application (Front-end &amp; Back-end) that will enable user to place bets
 Before you begin, make sure your development environment includes Node.js and an npm package manager.
 Your environment must also include the .NET Core SDK.
 
-## Database
-- From `~\speed-bet\SpeedBet\SpeedBet.Dal`, run `dotnet run` to create and populate the database. 
-(This will reinitialize the entire database and restore default entries).
-
-## Builds
+## Dependencies
 ### Back-end
 - From `~\speed-bet\SpeedBet`, run `dotnet restore` to restore dependencies and packages
 
 ### Front-end
 - From `~\speed-bet\speed-bet-app`, run `npm install` to install npm packages
+
+## Database
+- From `~\speed-bet\SpeedBet\SpeedBet.Dal`, run `dotnet run` to create and populate the database. 
+(This will reinitialize the entire database and restore default entries).
 
 ## Launch
 ### Back-end
