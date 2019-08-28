@@ -13,82 +13,12 @@ describe('MatchDetailsComponent', () => {
   const mockActivatedRoute = {
     paramMap: of(convertToParamMap({ id: 123 }))
   } as ActivatedRoute;
-
-  const mockMatch: MatchModel = {
-    matchId: 123,
-    sport: 'dance',
-    status: STATUS.upcoming,
-    type: 'Duel',
-    teams: [
-      {
-        name: 'TeamA',
-        odds: 12.1,
-        teamId: 111
-      },
-      {
-        name: 'TeamB',
-        odds: 2.1,
-        teamId: 222
-      }
-    ],
-    winner: null,
-    currentBet: null
-  };
-
-  const mockMatchWithBet: MatchModel = {
-    matchId: 123,
-    sport: 'dance',
-    status: STATUS.upcoming,
-    type: 'Duel',
-    teams: [
-      {
-        name: 'TeamA',
-        odds: 12.1,
-        teamId: 111
-      },
-      {
-        name: 'TeamB',
-        odds: 2.1,
-        teamId: 222
-      }
-    ],
-    winner: null,
-    currentBet: {
-      amount: 30000,
-      betId: 333,
-      matchId: 123,
-      odds: 12.1,
-      teamId: 111
-    }
-  };
-
-  const mockBet: BetModel = {
-    betId: 0,
-    matchId: 123,
-    teamId: 111,
-    odds: 12.1,
-    amount: 30000
-  };
-
-  const mockBetWithId: BetModel = {
-    betId: 333,
-    matchId: 123,
-    teamId: 111,
-    odds: 12.1,
-    amount: 30000
-  };
-
-  const mockWinnerTeamA: TeamModel = {
-    name: 'TeamA',
-    odds: 12.1,
-    teamId: 111
-  };
-
-  const mockWinnerTeamB: TeamModel = {
-    name: 'TeamB',
-    odds: 2.1,
-    teamId: 222
-  }
+  let mockMatch: MatchModel;
+  let mockMatchWithBet: MatchModel;
+  let mockBet: BetModel;
+  let mockBetWithId: BetModel;
+  let mockWinnerTeamA: TeamModel;
+  let mockWinnerTeamB: TeamModel;
 
   let component: MatchDetailsComponent;
   let fixture: ComponentFixture<MatchDetailsComponent>;
@@ -125,6 +55,89 @@ describe('MatchDetailsComponent', () => {
     component = fixture.componentInstance;
     service = TestBed.get(MatchesService);
     fixture.detectChanges();
+
+    mockMatch = {
+      matchId: 123,
+      sport: 'dance',
+      status: STATUS.upcoming,
+      type: 'Duel',
+      teams: [
+        {
+          name: 'TeamA',
+          odds: 12.1,
+          teamId: 111
+        },
+        {
+          name: 'TeamB',
+          odds: 2.1,
+          teamId: 222
+        }
+      ],
+      winner: null,
+      currentBet: null
+    };
+
+    mockMatchWithBet = {
+      matchId: 123,
+      sport: 'dance',
+      status: STATUS.upcoming,
+      type: 'Duel',
+      teams: [
+        {
+          name: 'TeamA',
+          odds: 12.1,
+          teamId: 111
+        },
+        {
+          name: 'TeamB',
+          odds: 2.1,
+          teamId: 222
+        }
+      ],
+      winner: null,
+      currentBet: {
+        amount: 30000,
+        betId: 333,
+        matchId: 123,
+        odds: 12.1,
+        teamId: 111
+      }
+    };
+
+    mockBet = {
+      betId: 0,
+      matchId: 123,
+      teamId: 111,
+      odds: 12.1,
+      amount: 30000
+    };
+
+    mockBetWithId = {
+      betId: 333,
+      matchId: 123,
+      teamId: 111,
+      odds: 12.1,
+      amount: 30000
+    };
+
+    mockWinnerTeamA = {
+      name: 'TeamA',
+      odds: 12.1,
+      teamId: 111
+    };
+
+    mockWinnerTeamB = {
+      name: 'TeamB',
+      odds: 2.1,
+      teamId: 222
+    };
+
+  });
+
+  afterEach(() => {
+    fixture = null;
+    component = null;
+    service = null;
   });
 
   it('should create', () => {
@@ -142,6 +155,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should set the match details on subscription', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = null;
     const expectedMatch = { ...mockMatch };
     const spy = spyOn(service, 'getMatch').and.callFake(() => of(mockMatch));
@@ -151,6 +165,7 @@ describe('MatchDetailsComponent', () => {
     // assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(123);
+    // tslint:disable-next-line: no-string-literal
     expect(component['match']).toEqual(expectedMatch);
   });
 
@@ -185,6 +200,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should place the bet on form submit', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatch;
     const spy = spyOn(service, 'placeBet').and.callFake(() => of(mockBetWithId));
     component.formGroup.patchValue({
@@ -202,6 +218,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should end the match and set the winner', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatch;
     const spy = spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamA));
     // act
@@ -209,11 +226,13 @@ describe('MatchDetailsComponent', () => {
     // assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(123);
+    // tslint:disable-next-line: no-string-literal
     expect(component['match'].winner).toEqual(mockWinnerTeamA);
   });
 
   it('should update the user balance if the bet is won', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatchWithBet;
     spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamA));
     const spy = spyOn(service, 'setBalance');
@@ -230,6 +249,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should not update the user balance if the bet is lost', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatchWithBet;
     spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamB));
     const spy = spyOn(service, 'setBalance');
@@ -241,6 +261,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should update potential gains when the form has a new value', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatch;
     component.toWin = '0';
     component.cashout = '0';
