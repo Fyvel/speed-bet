@@ -93,7 +93,7 @@ export class MatchDetailsComponent implements OnInit, OnDestroy {
       .subscribe(
         val => val && val.team && this.onFormValueChange(val),
         err => {
-          throw err;
+          throw new Error(err);
         }
       );
   }
