@@ -155,6 +155,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should set the match details on subscription', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = null;
     const expectedMatch = { ...mockMatch };
     const spy = spyOn(service, 'getMatch').and.callFake(() => of(mockMatch));
@@ -164,6 +165,7 @@ describe('MatchDetailsComponent', () => {
     // assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(123);
+    // tslint:disable-next-line: no-string-literal
     expect(component['match']).toEqual(expectedMatch);
   });
 
@@ -198,6 +200,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should place the bet on form submit', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatch;
     const spy = spyOn(service, 'placeBet').and.callFake(() => of(mockBetWithId));
     component.formGroup.patchValue({
@@ -215,6 +218,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should end the match and set the winner', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatch;
     const spy = spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamA));
     // act
@@ -222,11 +226,13 @@ describe('MatchDetailsComponent', () => {
     // assert
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(123);
+    // tslint:disable-next-line: no-string-literal
     expect(component['match'].winner).toEqual(mockWinnerTeamA);
   });
 
   it('should update the user balance if the bet is won', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatchWithBet;
     spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamA));
     const spy = spyOn(service, 'setBalance');
@@ -243,6 +249,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should not update the user balance if the bet is lost', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatchWithBet;
     spyOn(service, 'endMatch').and.callFake(() => of(mockWinnerTeamB));
     const spy = spyOn(service, 'setBalance');
@@ -254,6 +261,7 @@ describe('MatchDetailsComponent', () => {
 
   it('should update potential gains when the form has a new value', () => {
     // arrange
+    // tslint:disable-next-line: no-string-literal
     component['match'] = mockMatch;
     component.toWin = '0';
     component.cashout = '0';
