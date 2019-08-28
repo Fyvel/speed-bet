@@ -8,15 +8,11 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   balance$: Observable<BalanceModel>;
 
   constructor(private matchService: MatchesService) {
     this.matchService.initBalance().subscribe();
     this.balance$ = this.matchService.balance$;
   }
-
-  ngOnInit() {
-  }
-
 }

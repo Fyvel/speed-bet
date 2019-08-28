@@ -7,8 +7,6 @@ import { MatchesService } from './services/matches.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MatchesModule } from './matches/matches.module';
-import { MatchDetailsModule } from './match-details/match-details.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -19,8 +17,6 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatchesModule,
-    MatchDetailsModule,
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,
